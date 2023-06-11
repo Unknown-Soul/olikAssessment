@@ -56,7 +56,6 @@ public class RentalService {
             User user = userRepository.findById(1L).get();
             rentalBooking.setUser(user);
             rentalBookingRepository.saveAndFlush(rentalBooking);
-//            product.setBooked(true);
             productRepository.saveAndFlush(product);
             return "product saved successfully";
         }

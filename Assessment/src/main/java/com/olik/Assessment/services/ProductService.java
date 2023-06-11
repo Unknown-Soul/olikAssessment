@@ -39,11 +39,14 @@ public class ProductService {
         if (category.isPresent()) {
             Long categoryId = category.get().getId();
             String queryString = "SELECT p.* FROM product p " +
-                    "JOIN rental_booking rj ON p.id = rj.product_id " +
-                    "JOIN product_category pc ON p.id = pc.product_id " +
+                    "LEFT JOIN rental_booking rj ON p.id = rj.product_id " +
+                    "LEFT JOIN product_category pc ON p.id = pc.product_id " +
                     "WHERE pc.category_id = :categoryId " +
-                    "AND (:myStartDate not between  rj.start_date  AND rj.end_date) " +
-                    "AND (:myEndDate not between  rj.start_date  AND rj.end_date)";
+                    "AND ( " +
+                    "NOT EXISTS (SELECT 1 FROM rental_booking rb " +
+                    "WHERE rb.product_id = p.id " +
+                    "AND (rb.start_date BETWEEN :myStartDate AND :myEndDate OR " +
+                    "rb.end_date BETWEEN :myStartDate AND :myEndDate)))";
 
             Query query = entityManager.createNativeQuery(queryString);
             query.setParameter("categoryId", categoryId);
