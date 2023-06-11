@@ -24,12 +24,6 @@ public class RentalAppController {
     RentalService rentalService;
 
 
-//    @GetMapping("/products")
-//    public ResponseEntity<List<ProductDTO>> getAllProducts() {
-//        List<ProductDTO> products = productService.getAllProducts();
-//        return ResponseEntity.ok(products);
-//    }
-
     @PostMapping("/products")
     public ResponseEntity<List<Product>> getProducts(@RequestBody GetProductCO request) {
         List<Product> productList = productService.getAllProducts(request);

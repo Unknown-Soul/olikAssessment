@@ -9,14 +9,14 @@ public class ProductDTO {
     private String image;
     private double costPerHour;
 
-    public ProductDTO(String name, String category, String image, double costPerHour){
+    public ProductDTO(String name, String category, String image, double costPerHour) {
         this.name = name;
         this.category = category;
         this.image = image;
         this.costPerHour = costPerHour;
     }
 
-    public ProductDTO(){
-        
+    public ProductDTO() {
+
     }
 }

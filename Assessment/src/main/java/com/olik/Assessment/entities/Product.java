@@ -14,9 +14,6 @@ public class Product {
     // assuming 1 image per product
     private String image;
     private double costPerHour;
-//    private boolean isBooked = false;
-//    private double costPerDay;
-//    private double costPerWeek;
     @ManyToMany
     @JoinTable(
             name = "product_category",
