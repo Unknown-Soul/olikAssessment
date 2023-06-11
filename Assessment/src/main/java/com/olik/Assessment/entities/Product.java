@@ -1,4 +1,5 @@
 package com.olik.Assessment.entities;
+
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,6 +15,10 @@ public class Product {
     // assuming 1 image per product
     private String image;
     private double costPerHour;
+    //TODO: For sake of simplicity considering costPerHour Only
+    private double costPerDays;
+    private double costPerWeek;
+
     @ManyToMany
     @JoinTable(
             name = "product_category",

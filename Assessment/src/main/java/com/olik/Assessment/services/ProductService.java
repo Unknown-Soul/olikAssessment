@@ -16,7 +16,6 @@ import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -62,10 +61,13 @@ public class ProductService {
         List<ProductDTO> productDTOList = new ArrayList<>();
         for (Product product : productsList) {
             ProductDTO productDTO = new ProductDTO();
+            productDTO.setId(product.getId());
             productDTO.setImage(product.getImage());
             productDTO.setName(product.getName());
             productDTO.setCategory(product.getCategories().toString());
             productDTO.setCostPerHour(product.getCostPerHour());
+            productDTO.setCostPerWeek(product.getCostPerWeek());
+            productDTO.setCostPerDay(product.getCostPerDays());
             productDTOList.add(productDTO);
         }
         return productDTOList;

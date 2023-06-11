@@ -36,7 +36,7 @@ public class RentalService {
             Product product = productOptional.get();
             //Todo
             /**
-             *  we can put backend check to check end date is greataer than start date
+             *  we can put backend check to check end date is greater than start date
              *  to change status to false we can create job .
              *  verify product is not already booked
              * */
