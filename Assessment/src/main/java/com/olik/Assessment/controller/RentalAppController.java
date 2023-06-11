@@ -3,9 +3,6 @@ package com.olik.Assessment.controller;
 import com.olik.Assessment.co.GetProductCO;
 import com.olik.Assessment.co.RentalBookingRequestCO;
 import com.olik.Assessment.dto.ProductDTO;
-import com.olik.Assessment.dto.RentalBookingDTO;
-import com.olik.Assessment.entities.Product;
-import com.olik.Assessment.entities.RentalBooking;
 import com.olik.Assessment.services.ProductService;
 import com.olik.Assessment.services.RentalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +22,10 @@ public class RentalAppController {
 
 
     @PostMapping("/products")
-    public ResponseEntity<List<Product>> getProducts(@RequestBody GetProductCO request) {
-        List<Product> productList = productService.getAllProducts(request);
-        return ResponseEntity.ok((productList));
+    public ResponseEntity<List<ProductDTO>> getProducts(@RequestBody GetProductCO request) {
+        List<ProductDTO> productList = productService.getAllProducts(request);
+        return ResponseEntity.ok(productList);
     }
-
 
     @PostMapping("/book/product")
     public ResponseEntity<String> bookRental(@RequestBody RentalBookingRequestCO request) {
